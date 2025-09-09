@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据能力规划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 定义打印样式 */
+        @media print {
+            body {
+                margin: 0;
+                -webkit-print-color-adjust: exact; /* 确保打印时颜色和背景被渲染 */
+                print-color-adjust: exact;
+            }
+            .page {
+                page-break-after: always;
+                box-shadow: none !important;
+                margin: 0 !important;
+                border: none !important;
+                height: 100vh; /* 确保每页内容撑满打印页面 */
+            }
+            .page:last-child {
+                page-break-after: auto;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+
+        /* 定义屏幕预览样式 */
+        @media screen {
+            body {
+                background-color: #f3f4f6; /* 浅灰色背景 */
+            }
+            .page {
+                background-color: white;
+                width: 210mm; /* A4 纸宽度 */
+                min-height: 297mm; /* A4 纸高度 */
+                margin: 2rem auto;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                border: 1px solid #e5e7eb;
+            }
+        }
+        
+        /* 通用样式 */
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+        }
+
+        .header-gradient {
+            background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+
+        .stage-title {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .card {
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+            border-color: #3b82f6;
+        }
+
+        .connector {
+            position: relative;
+        }
+
+        .connector::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            width: 2px;
+            height: 2rem; /* 连接线长度 */
+            background-color: #d1d5db;
+        }
+
+        .horizontal-connector {
+             position: relative;
+        }
+
+        .horizontal-connector::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            height: 2px;
+            width: 2rem;
+            background-color: #d1d5db;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 提示信息 -->
+    <div class="no-print p-4 bg-blue-100 border-l-4 border-blue-500 text-blue-700 text-center sticky top-0 z-50">
+        <p class="font-bold">预览模式</p>
+        <p>按下 Ctrl+P 或 Cmd+P 可以将此报告打印或保存为多页 PDF。</p>
+    </div>
+
+    <!-- 阶段一：基础交易数据信息 -->
+    <div class="page p-12 flex flex-col">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl font-bold text-gray-800 stage-title">阶段一：基础交易数据信息</h1>
+            <p class="text-gray-500 mt-2">数据准备：从原始交易数据中提取和衍生基础特征</p>
+            <div class="w-24 h-1 bg-blue-600 mx-auto mt-4 rounded"></div>
+        </header>
+
+        <main class="flex-grow grid grid-cols-3 gap-x-8 gap-y-12">
+            <!-- 交易金额 -->
+            <div class="card bg-slate-50 rounded-lg p-4 shadow-sm">
+                <div class="flex items-center">
+                    <div class="p-2 bg-blue-100 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 10v-1m0 0c-1.11 0-2.08-.402-2.599-1M9.401 15c-.519-.598-1.401-1-2.599-1m5.198 0c.519.598 1.401 1 2.599 1M12 21a9 9 0 110-18 9 9 0 010 18z" /></svg></div>
+                    <h3 class="text-lg font-semibold ml-3 text-gray-700">交易金额</h3>
+                </div>
+                <ul class="mt-3 list-disc list-inside text-gray-600 space-y-1 pl-2">
+                    <li>原始金额</li>
+                    <li class="font-medium text-blue-700">衍生：大额, 小额</li>
+                </ul>
+            </div>
+
+            <!-- 交易时间 -->
+            <div class="card bg-slate-50 rounded-lg p-4 shadow-sm">
+                <div class="flex items-center">
+                    <div class="p-2 bg-green-100 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
+                    <h3 class="text-lg font-semibold ml-3 text-gray-700">交易时间</h3>
+                </div>
+                <ul class="mt-3 list-disc list-inside text-gray-600 space-y-1 pl-2">
+                    <li>原始时间戳</li>
+                    <li class="font-medium text-green-700">衍生：星期, 周末, 节假日</li>
+                </ul>
+            </div>
+
+            <!-- 交易渠道 -->
+            <div class="card bg-slate-50 rounded-lg p-4 shadow-sm">
+                <div class="flex items-center">
+                    <div class="p-2 bg-purple-100 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" /></svg></div>
+                    <h3 class="text-lg font-semibold ml-3 text-gray-700">交易渠道</h3>
+                </div>
+                <ul class="mt-3 list-disc list-inside text-gray-600 space-y-1 pl-2">
+                    <li>一级 / 二级 / 三级</li>
+                    <li>线上 / 线下</li>
+                    <li>境内 / 境外 (国家, 地区, 城市)</li>
+                </ul>
+            </div>
+
+            <!-- 卡 -->
+            <div class="card bg-slate-50 rounded-lg p-4 shadow-sm">
+                <div class="flex items-center">
+                    <div class="p-2 bg-yellow-100 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg></div>
+                    <h3 class="text-lg font-semibold ml-3 text-gray-700">卡信息</h3>
+                </div>
+                <ul class="mt-3 list-disc list-inside text-gray-600 space-y-1 pl-2">
+                    <li>卡产品 (Card Product)</li>
+                    <li>卡等级 (Tier)</li>
+                </ul>
+            </div>
+
+            <!-- 机构 -->
+            <div class="card bg-slate-50 rounded-lg p-4 shadow-sm">
+                <div class="flex items-center">
+                    <div class="p-2 bg-red-100 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg></div>
+                    <h3 class="text-lg font-semibold ml-3 text-gray-700">机构信息</h3>
+                </div>
+                 <ul class="mt-3 list-disc list-inside text-gray-600 space-y-1 pl-2">
+                    <li>发卡银行</li>
+                    <li>收单机构</li>
+                </ul>
+            </div>
+
+            <!-- 商户 -->
+            <div class="card bg-slate-50 rounded-lg p-4 shadow-sm">
+                <div class="flex items-center">
+                    <div class="p-2 bg-indigo-100 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg></div>
+                    <h3 class="text-lg font-semibold ml-3 text-gray-700">商户信息</h3>
+                </div>
+                <ul class="mt-3 list-disc list-inside text-gray-600 space-y-1 pl-2">
+                    <li>POS 注册商户</li>
+                    <li>二级商户</li>
+                    <li>OB 境外商户</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <!-- 阶段二：商户标签信息加工 -->
+    <div class="page p-12 flex flex-col">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl font-bold text-gray-800 stage-title">阶段二：商户标签信息加工</h1>
+            <p class="text-gray-500 mt-2">特征工程：AI 赋能，拓展商户信息维度，实现自动化标签</p>
+            <div class="w-24 h-1 bg-green-600 mx-auto mt-4 rounded"></div>
+        </header>
+
+        <main class="flex-grow flex flex-col items-center justify-center">
+            <div class="flex items-center">
+                 <div class="text-center p-4">
+                     <div class="p-4 bg-gray-100 rounded-xl inline-block shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                     </div>
+                     <p class="mt-2 font-semibold text-gray-700">商户基础信息</p>
+                 </div>
+                 
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-400 mx-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+
+                 <div class="text-center p-4">
+                    <div class="p-4 bg-green-100 rounded-xl inline-block shadow-md ring-2 ring-green-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                    </div>
+                    <p class="mt-2 font-bold text-green-700">AI 识别和自动打标</p>
+                 </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-400 my-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" /></svg>
+
+            <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                <!-- 核心标签 -->
+                <div class="card rounded-lg p-5 bg-white">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3 border-b pb-2">核心标签</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start"><span class="font-semibold w-20 shrink-0">行业:</span><span>餐饮, 零售, 汽车服务, 酒店...</span></li>
+                        <li class="flex items-start"><span class="font-semibold w-20 shrink-0">品牌:</span><span>品牌名称</span></li>
+                        <li class="flex items-start"><span class="font-semibold w-20 shrink-0">地理位置:</span><span>城市, 国家</span></li>
+                    </ul>
+                </div>
+
+                <!-- 渠道属性 -->
+                <div class="card rounded-lg p-5 bg-white">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3 border-b pb-2">渠道属性</h3>
+                    <ul class="space-y-2 text-gray-600">
+                         <li class="flex items-start"><span class="font-semibold w-24 shrink-0">线上/线下:</span><span>明确交易场景</span></li>
+                    </ul>
+                </div>
+
+                <!-- 场景客户分析 -->
+                <div class="card rounded-lg p-5 bg-white">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3 border-b pb-2">场景客户分析</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start"><span class="font-semibold w-24 shrink-0">消费场景:</span><span>旅行, 奢品, 差旅, 亲子, 夜生活...</span></li>
+                        <li class="flex items-start"><span class="font-semibold w-24 shrink-0">目标客群:</span><span>儿童, 母婴, 女士, 学生...</span></li>
+                        <li class="flex items-start"><span class="font-semibold w-24 shrink-0">地点子类型:</span><span>(如有)</span></li>
+                        <li class="flex items-start"><span class="font-semibold w-24 shrink-0">服务品类:</span><span>火锅, 咖啡, 手机, 书店...</span></li>
+                        <li class="flex items-start"><span class="font-semibold w-24 shrink-0">价格敏感:</span><span>奢侈, 经济, 折扣</span></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 阶段三：客户画像，机器学习和计算 -->
+    <div class="page p-12 flex flex-col">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl font-bold text-gray-800 stage-title">阶段三：客户画像，机器学习与计算</h1>
+            <p class="text-gray-500 mt-2">算法核心：通过机器学习算法，从特征中挖掘客群画像</p>
+            <div class="w-24 h-1 bg-purple-600 mx-auto mt-4 rounded"></div>
+        </header>
+
+        <main class="flex-grow flex flex-col items-center justify-center space-y-8">
+            <div class="card w-4/5 p-6 rounded-xl bg-gray-50 text-center shadow-lg connector">
+                <div class="p-3 bg-purple-100 rounded-full inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 10V5a2 2 0 012-2h2z" /></svg>
+                </div>
+                <h3 class="text-xl font-semibold mt-2 text-gray-800">1. 标签频次统计与评分累计</h3>
+                <p class="text-gray-500 mt-1">量化所有标签，为每个客户生成初步的量化指标。</p>
+            </div>
+
+            <div class="card w-4/5 p-6 rounded-xl bg-gray-50 text-center shadow-lg connector">
+                <div class="p-3 bg-purple-100 rounded-full inline-block">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>
+                </div>
+                <h3 class="text-xl font-semibold mt-2 text-gray-800">2. 构建行为特征向量</h3>
+                <p class="text-gray-500 mt-1">将量化指标转化为机器学习模型可识别的特征向量 (Feature Vector)。</p>
+            </div>
+
+            <div class="card w-4/5 p-6 rounded-xl bg-gray-50 text-center shadow-lg connector">
+                <div class="p-3 bg-purple-100 rounded-full inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" /></svg>
+                </div>
+                <h3 class="text-xl font-semibold mt-2 text-gray-800">3. 聚类算法 (Clustering)</h3>
+                <p class="text-gray-500 mt-1">使用 K-Means, DBSCAN 等算法对客户进行无监督聚类，形成初步客群。</p>
+            </div>
+
+            <div class="card w-4/5 p-6 rounded-xl bg-purple-500 text-white text-center shadow-lg">
+                 <div class="p-3 bg-white rounded-full inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                </div>
+                <h3 class="text-xl font-semibold mt-2">4. 画像解读、命名与分析</h3>
+                <p class="opacity-80 mt-1">结合数据观察和手工分析，对形成的客群进行商业化解读和命名。</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- 阶段四：价值场景 -->
+    <div class="page p-12 flex flex-col">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl font-bold text-gray-800 stage-title">阶段四：价值场景，分析与挖掘</h1>
+            <p class="text-gray-500 mt-2">商业应用：将客户画像应用于实际业务场景，创造商业价值</p>
+            <div class="w-24 h-1 bg-yellow-500 mx-auto mt-4 rounded"></div>
+        </header>
+
+        <main class="flex-grow space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- 客群分析 -->
+                <div class="card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">客群分析</h3>
+                    <ul class="space-y-3">
+                        <li class="bg-white p-3 rounded-md shadow-sm">
+                            <p class="font-semibold text-blue-700">基本客户画像</p>
+                            <p class="text-sm text-gray-600">基于消费统计的宏观洞察</p>
+                        </li>
+                        <li class="bg-white p-3 rounded-md shadow-sm">
+                            <p class="font-semibold text-blue-700">卡产品与画像关系</p>
+                            <p class="text-sm text-gray-600">高端卡客群放大，相似客群产品分析</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 品牌分析 -->
+                <div class="card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">品牌分析</h3>
+                     <ul class="space-y-3">
+                        <li class="bg-white p-3 rounded-md shadow-sm">
+                            <p class="font-semibold text-green-700">品牌关联</p>
+                            <p class="text-sm text-gray-600">发现共享客群的跨行业品牌</p>
+                        </li>
+                        <li class="bg-white p-3 rounded-md shadow-sm">
+                            <p class="font-semibold text-green-700">品牌比较与竞争</p>
+                            <p class="text-sm text-gray-600">同行业客群差异，竞品客群转换分析</p>
+                        </li>
+                        <li class="bg-white p-3 rounded-md shadow-sm">
+                            <p class="font-semibold text-green-700">场景渗透率 & 潜在客群</p>
+                            <p class="text-sm text-gray-600">地区热图分析，联名获客机会挖掘</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 行为关联分析 -->
+                <div class="card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">行为关联分析</h3>
+                     <ul class="space-y-3">
+                        <li class="bg-white p-3 rounded-md shadow-sm">
+                            <p class="font-semibold text-purple-700">消费行为关联</p>
+                            <p class="text-sm text-gray-600">如旅行预测 (酒店->保险->箱包)</p>
+                            <p class="text-sm text-gray-600">如装修、母婴、买车等系列消费</p>
+                        </li>
+                        <li class="bg-white p-3 rounded-md shadow-sm">
+                            <p class="font-semibold text-purple-700">客户生命周期追踪</p>
+                            <p class="text-sm text-gray-600">流失预警与行为分析</p>
+                        </li>
+                         <li class="bg-white p-3 rounded-md shadow-sm">
+                            <p class="font-semibold text-red-700">欺诈行为识别</p>
+                            <p class="text-sm text-gray-600">非常用地大额消费，小额试探等</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <footer class="mt-8 pt-6 border-t text-center">
+                 <p class="text-lg font-semibold text-gray-700">技术支撑</p>
+                 <p class="text-gray-500 mt-2">
+                    <span class="font-semibold">序列模式挖掘：</span>Apriori, FP-Growth
+                    <span class="mx-3">|</span>
+                    <span class="font-semibold">预测模型：</span>特征工程，机器学习预测
+                 </p>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>
