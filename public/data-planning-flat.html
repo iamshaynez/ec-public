@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC 数据挖掘规划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F8F9FA;
+        }
+        /* 定义莫兰迪色系变量 */
+        :root {
+            --morandi-blue: #a2b9d1;
+            --morandi-green: #b9d8c7;
+            --morandi-pink: #e6c8c4;
+            --morandi-yellow: #f0e0b0;
+            --morandi-purple: #c7c6d9;
+            --morandi-grey: #d3d3d3;
+            --text-primary: #343a40;
+            --text-secondary: #495057;
+            --border-color: #dee2e6;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .title-card {
+            background-color: var(--morandi-blue);
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .card-header {
+            font-weight: 500;
+            padding: 0.75rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+        .card-content {
+            padding: 1.25rem;
+            color: var(--text-secondary);
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25em 0.6em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+        }
+        .connector {
+            position: relative;
+        }
+        .connector::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 2rem;
+            height: 2px;
+            background-color: var(--morandi-grey);
+            transform: translateY(-50%);
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--morandi-grey);
+            margin: 0 1rem;
+        }
+        /* 为每个阶段的主要卡片定义不同的标题背景色 */
+        .header-blue { background-color: var(--morandi-blue); color: white; }
+        .header-green { background-color: var(--morandi-green); color: white; }
+        .header-pink { background-color: var(--morandi-pink); color: white; }
+        .header-yellow { background-color: var(--morandi-yellow); color: var(--text-primary); }
+        .header-purple { background-color: var(--morandi-purple); color: white; }
+
+        .tag {
+            background-color: #e9ecef;
+            color: var(--text-secondary);
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            margin: 0.25rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Slide 1: Title -->
+    <section class="slide">
+        <div class="text-center">
+            <h1 class="text-6xl font-bold" style="color: var(--text-primary);">EC 数据挖掘规划</h1>
+            <p class="text-xl mt-4" style="color: var(--text-secondary);">完整商业价值场景实现路径</p>
+        </div>
+    </section>
+
+    <!-- Slide 2: Stage 1 -->
+    <section class="slide">
+        <div class="w-full max-w-7xl text-center">
+            <h2 class="text-3xl font-bold mb-2" style="color: var(--text-primary);">阶段一：基础交易数据信息</h2>
+            <p class="text-lg mb-12" style="color: var(--text-secondary);">从原始交易数据中提炼核心与衍生信息</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 交易金额 -->
+                <div class="card">
+                    <div class="card-header header-blue">交易金额</div>
+                    <div class="card-content">
+                        <p class="font-semibold">核心指标</p>
+                        <div class="mt-2">
+                            <span class="tag">大额交易</span>
+                            <span class="tag">小额交易</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 交易时间 -->
+                <div class="card">
+                    <div class="card-header header-blue">交易时间</div>
+                    <div class="card-content">
+                        <p class="font-semibold">衍生标签</p>
+                         <div class="mt-2">
+                            <span class="tag">工作日</span>
+                            <span class="tag">周末</span>
+                            <span class="tag">节假日</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 交易渠道 -->
+                <div class="card">
+                    <div class="card-header header-blue">交易渠道</div>
+                    <div class="card-content">
+                        <p class="font-semibold">渠道层级与属性</p>
+                         <div class="mt-2">
+                            <span class="tag">一级/二级/三级</span>
+                            <span class="tag">线上/线下</span>
+                            <span class="tag">境内/境外</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 卡信息 -->
+                <div class="card">
+                    <div class="card-header header-blue">卡信息</div>
+                    <div class="card-content">
+                        <p class="font-semibold">卡产品与等级</p>
+                        <div class="mt-2">
+                            <span class="tag">黑金卡/白金卡</span>
+                            <span class="tag">互联网联名卡</span>
+                            <span class="tag">等级划分</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 机构信息 -->
+                <div class="card">
+                    <div class="card-header header-blue">机构信息</div>
+                    <div class="card-content">
+                        <p class="font-semibold">相关方</p>
+                        <div class="mt-2">
+                            <span class="tag">发卡银行</span>
+                            <span class="tag">收单机构</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 商户信息 -->
+                <div class="card">
+                    <div class="card-header header-blue">商户信息</div>
+                    <div class="card-content">
+                        <p class="font-semibold">商户类型</p>
+                        <div class="mt-2">
+                            <span class="tag">POS 注册商户</span>
+                            <span class="tag">二级商户</span>
+                            <span class="tag">OB 境外商户</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 3: Stage 2 -->
+    <section class="slide">
+        <div class="w-full max-w-7xl text-center">
+            <h2 class="text-3xl font-bold mb-2" style="color: var(--text-primary);">阶段二：商户标签信息扩展加工</h2>
+            <p class="text-lg mb-12" style="color: var(--text-secondary);">AI赋能商户识别与自动打标，拓展信息维度</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                <!-- 核心 -->
+                <div class="card h-full">
+                    <div class="card-header header-green">核心标签</div>
+                    <div class="card-content">
+                        <ul class="list-disc list-inside space-y-2 text-left">
+                            <li><b>行业:</b> 餐饮, 零售, 汽车服务, 酒店</li>
+                            <li><b>品牌:</b> 知名品牌识别</li>
+                            <li><b>地理位置:</b> 城市, 国家</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 渠道属性 -->
+                <div class="card h-full">
+                    <div class="card-header header-green">渠道属性</div>
+                    <div class="card-content">
+                        <ul class="list-disc list-inside space-y-2 text-left">
+                            <li><b>线上线下:</b> 明确交易场景</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 场景客户分析 -->
+                <div class="card h-full row-span-2">
+                    <div class="card-header header-green">场景客户分析</div>
+                    <div class="card-content">
+                        <ul class="list-disc list-inside space-y-3 text-left">
+                            <li><b>消费场景:</b> 旅行, 奢品, 差旅, 亲子, 夜生活</li>
+                            <li><b>目标客群:</b> 儿童, 母婴, 女士, 学生</li>
+                            <li><b>地点子类型:</b> (如有) 机场, 购物中心</li>
+                            <li><b>服务品类:</b> 火锅, 咖啡, 牛排, 手机, 书店</li>
+                            <li><b>价格敏感:</b> 奢侈, 经济, 折扣</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Stage 3 -->
+    <section class="slide">
+        <div class="w-full max-w-7xl text-center">
+            <h2 class="text-3xl font-bold mb-2" style="color: var(--text-primary);">阶段三：客户画像、机器学习与计算</h2>
+            <p class="text-lg mb-12" style="color: var(--text-secondary);">从标签到画像，实现客群的自动化聚类与解读</p>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
+                <!-- Step 1 -->
+                <div class="card w-64">
+                    <div class="card-header header-pink">频次统计与评分</div>
+                    <div class="card-content">对所有标签做频次统计和评分累计</div>
+                </div>
+                <div class="flow-arrow hidden md:block">→</div>
+                <!-- Step 2 -->
+                <div class="card w-64">
+                    <div class="card-header header-pink">特征向量构建</div>
+                    <div class="card-content">为每个客户构建多维度行为特征向量</div>
+                </div>
+                <div class="flow-arrow hidden md:block">→</div>
+                <!-- Step 3 -->
+                <div class="card w-64">
+                    <div class="card-header header-pink">聚类算法</div>
+                    <div class="card-content">应用机器学习算法进行客群聚类</div>
+                </div>
+                <div class="flow-arrow hidden md:block">→</div>
+                <!-- Step 4 -->
+                <div class="card w-64">
+                    <div class="card-header header-pink">画像解读与分析</div>
+                    <div class="card-content">画像命名，数据观察和手工分析</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 5: Data Map -->
+    <section class="slide">
+        <div class="w-full max-w-7xl text-center">
+            <h2 class="text-3xl font-bold mb-2" style="color: var(--text-primary);">数据地图：立体化商业场景数据基础</h2>
+            <p class="text-lg mb-12" style="color: var(--text-secondary);">以持卡人和商户为核心，进行数据归因、关联与挖掘</p>
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <div class="card-header header-yellow">交易基础统计</div>
+                    <div class="card-content text-sm">交易量, 活跃卡, 时间及衍生频次活跃等</div>
+                </div>
+                <div class="card">
+                    <div class="card-header header-yellow">持卡人画像分析</div>
+                    <div class="card-content text-sm">完整的持卡人分析与商户目标客群匹配</div>
+                </div>
+                 <div class="card">
+                    <div class="card-header header-yellow">品牌与行业维度</div>
+                    <div class="card-content text-sm">更细维度的品牌、行业数据基础</div>
+                </div>
+                <div class="card">
+                    <div class="card-header header-yellow">商户与商圈维度</div>
+                    <div class="card-content text-sm">商户类型, 地理位置, 衍生标签</div>
+                </div>
+                <div class="card">
+                    <div class="card-header header-yellow">卡产品与机构维度</div>
+                    <div class="card-content text-sm">卡产品, 卡等级, 发卡银行, 机构等</div>
+                </div>
+                <div class="card">
+                    <div class="card-header header-yellow">营销与事件关联</div>
+                    <div class="card-content text-sm">内外部营销活动、权益及重大事件关联分析</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Stage 4 - Part 1 -->
+    <section class="slide">
+        <div class="w-full max-w-7xl text-center">
+            <h2 class="text-3xl font-bold mb-2" style="color: var(--text-primary);">阶段四：价值场景（一）</h2>
+            <p class="text-lg mb-12" style="color: var(--text-secondary);">结合手工分析与机器挖掘，探索商业价值</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <!-- 宏观数据统计 -->
+                <div class="card">
+                    <div class="card-header header-purple">更细的宏观数据统计</div>
+                    <div class="card-content text-left">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>行业消费数据变化趋势（卡均，地理分布等）</li>
+                            <li>交易行为变化趋势</li>
+                            <li>更细的交易特征维度趋势特征</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 客群分析 -->
+                <div class="card">
+                    <div class="card-header header-purple">客群分析</div>
+                    <div class="card-content text-left">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><b>基本客户画像:</b> 消费统计与客群特征</li>
+                            <li><b>卡产品与画像关系:</b>
+                                <ul class="list-circle list-inside ml-4">
+                                    <li>高端卡产品客群放大</li>
+                                    <li>相似客群卡产品分析</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Stage 4 - Part 2 -->
+    <section class="slide">
+        <div class="w-full max-w-7xl text-center">
+            <h2 class="text-3xl font-bold mb-2" style="color: var(--text-primary);">阶段四：价值场景（二）：品牌分析</h2>
+            <p class="text-lg mb-12" style="color: var(--text-secondary);">深入挖掘品牌间的关联、竞争与潜在机会</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <div class="card-header header-purple">品牌关联</div>
+                    <div class="card-content text-sm">发现共享客群的品牌 (奢品, 酒店, 餐厅等跨行业关联)</div>
+                </div>
+                <div class="card">
+                    <div class="card-header header-purple">品牌比较</div>
+                    <div class="card-content text-sm">分析同行业品牌的客群差异</div>
+                </div>
+                 <div class="card">
+                    <div class="card-header header-purple">品牌竞争</div>
+                    <div class="card-content text-sm">识别竞品客群，洞察转换情况</div>
+                </div>
+                <div class="card">
+                    <div class="card-header header-purple">场景渗透率</div>
+                    <div class="card-content text-sm">比较同行业、同场景下品牌交易的占比</div>
+                </div>
+                <div class="card col-span-1 md:col-span-2 lg:col-span-2">
+                    <div class="card-header header-purple">潜在客群</div>
+                    <div class="card-content text-sm flex justify-around">
+                        <span>地区热图分析</span>
+                        <span>联名获客机会</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: Stage 4 - Part 3 -->
+    <section class="slide">
+        <div class="w-full max-w-7xl">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold mb-2" style="color: var(--text-primary);">阶段四：价值场景（三）：行为关联分析</h2>
+                <p class="text-lg mb-12" style="color: var(--text-secondary);">通过序列模式挖掘，预测客户行为与识别风险</p>
+            </div>
+            <div class="space-y-6">
+                <!-- 消费行为 -->
+                <div class="card">
+                    <div class="card-content flex items-center p-4">
+                        <div class="w-1/4 font-semibold text-lg" style="color:var(--morandi-blue);">长途旅行预测</div>
+                        <div class="flex items-center space-x-2 text-sm">
+                            <span class="tag">酒店</span> <span class="tag">保险</span> <span class="tag">箱包</span> <span class="tag">签证</span>
+                            <span class="text-gray-400 mx-2 text-2xl">→</span>
+                            <span class="badge bg-blue-100 text-blue-800">OB消费</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 装修 -->
+                <div class="card">
+                    <div class="card-content flex items-center p-4">
+                        <div class="w-1/4 font-semibold text-lg" style="color:var(--morandi-green);">装修行为</div>
+                        <div class="flex items-center space-x-2 text-sm">
+                             <span class="tag">中介</span> <span class="tag">搬家</span>
+                            <span class="text-gray-400 mx-2 text-2xl">→</span>
+                            <span class="tag">建材</span> <span class="tag">家居</span> <span class="tag">家电</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 母婴 -->
+                <div class="card">
+                    <div class="card-content flex items-center p-4">
+                        <div class="w-1/4 font-semibold text-lg" style="color:var(--morandi-pink);">母婴周期</div>
+                        <div class="flex items-center space-x-2 text-sm">
+                            <span class="tag">产科</span> <span class="tag">母婴用品</span> <span class="tag">月子中心</span>
+                            <span class="text-gray-400 mx-2 text-2xl">→</span>
+                             <span class="badge bg-pink-100 text-pink-800">早教/亲子</span>
+                        </div>
+                    </div>
+                </div>
+                 <!-- 其他 -->
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <div class="card p-4 text-center">
+                        <h4 class="font-semibold">客户生命周期</h4><p class="text-sm text-gray-500">识别流失预警</p>
+                    </div>
+                    <div class="card p-4 text-center">
+                        <h4 class="font-semibold">欺诈行为识别</h4><p class="text-sm text-gray-500">非常用地大额消费, 小额试探等</p>
+                    </div>
+                     <div class="card p-4 text-center">
+                        <h4 class="font-semibold">买车行为</h4><p class="text-sm text-gray-500">定金, 汽车资讯类服务</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12 text-sm text-gray-500 border-t pt-4">
+                技术应用：序列模式挖掘 (Apriori, FP-Growth) | 特征工程 | 机器学习预测
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
