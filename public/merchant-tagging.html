@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商户数据 AI 标签化加工方案</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 使用 Noto Sans SC 作为中文字体，Inter 作为英文字体 */
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #f8f9fa; /* 使用一个非常浅的灰色背景，让白色卡片突出 */
+        }
+        /* 定义莫兰迪色板 */
+        :root {
+            --morandi-blue: #a2b9c8;
+            --morandi-green: #c2d1c2;
+            --morandi-pink: #e0c5c8;
+            --morandi-gray: #d4d4d4;
+            --morandi-khaki: #d3c4a8;
+            --text-primary: #374151; /* 深灰色文本 */
+            --text-secondary: #6b7280; /* 浅灰色文本 */
+        }
+        .slide {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .bg-morandi-blue { background-color: var(--morandi-blue); }
+        .text-morandi-blue { color: var(--morandi-blue); }
+        .bg-morandi-green { background-color: var(--morandi-green); }
+        .text-morandi-green { color: var(--morandi-green); }
+        .bg-morandi-pink { background-color: var(--morandi-pink); }
+        .text-morandi-pink { color: var(--morandi-pink); }
+        .bg-morandi-khaki { background-color: var(--morandi-khaki); }
+        .text-morandi-khaki { color: var(--morandi-khaki); }
+        .text-primary { color: var(--text-primary); }
+        .text-secondary { color: var(--text-secondary); }
+
+        /* 流程图箭头样式 */
+        .arrow {
+            position: relative;
+            width: 8rem;
+            height: 2px;
+            background-color: var(--morandi-gray);
+            margin: 0 1rem;
+        }
+        .arrow::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 8px solid var(--morandi-gray);
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Slide 1: 标题页 -->
+    <section class="slide bg-slate-50">
+        <div class="text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-primary tracking-wider">商户数据 AI 标签化加工方案</h1>
+            <p class="mt-4 text-xl md:text-2xl text-secondary">AI-Powered Tagging Solution for Merchant Data</p>
+            <div class="mt-12 flex justify-center gap-x-4">
+                <div class="w-32 h-2 rounded-full" style="background-color: var(--morandi-blue);"></div>
+                <div class="w-32 h-2 rounded-full" style="background-color: var(--morandi-green);"></div>
+                <div class="w-32 h-2 rounded-full" style="background-color: var(--morandi-pink);"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: ETL 工作流 -->
+    <section class="slide">
+        <div class="w-full max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-primary mb-4">ETL 工作流</h2>
+            <p class="text-lg text-secondary mb-16">端到端的数据增值与系统边界</p>
+            <div class="flex flex-col md:flex-row items-center justify-center w-full">
+                <!-- 步骤 1: 原始数据 -->
+                <div class="flex flex-col items-center text-center p-4">
+                     <div class="w-24 h-24 rounded-full bg-morandi-blue flex items-center justify-center text-white mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7l8 4.5 8-4.5m-16 5.5l8 4.5 8-4.5" /></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-primary">原始商户数据</h3>
+                    <p class="text-sm text-secondary mt-1 w-48 h-10">POS, OB境外, XML二级商户名称等</p>
+                    <div class="mt-2 px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800">
+                        存储: 大数据平台
+                    </div>
+                </div>
+                
+                <div class="arrow hidden md:block"></div>
+                <div class="transform rotate-90 md:hidden my-4">
+                    <div class="arrow"></div>
+                </div>
+
+                <!-- 步骤 2: 大模型处理 -->
+                <div class="flex flex-col items-center text-center p-4">
+                    <div class="w-24 h-24 rounded-full bg-morandi-green flex items-center justify-center text-white mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-primary">大模型处理</h3>
+                    <p class="text-sm text-secondary mt-1 w-48 h-10">生成标签与衍生信息</p>
+                     <div class="mt-2 px-3 py-1 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-800">
+                        服务: 自部署 / MaaS
+                    </div>
+                </div>
+
+                <div class="arrow hidden md:block"></div>
+                 <div class="transform rotate-90 md:hidden my-4">
+                    <div class="arrow"></div>
+                </div>
+
+                <!-- 步骤 3: 标签写回 -->
+                <div class="flex flex-col items-center text-center p-4">
+                     <div class="w-24 h-24 rounded-full bg-morandi-pink flex items-center justify-center text-white mb-4">
+                       <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-primary">标签写回</h3>
+                    <p class="text-sm text-secondary mt-1 w-48 h-10">写回商户信息，按需清洗</p>
+                    <div class="mt-2 px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800">
+                        存储: 大数据平台
+                    </div>
+                </div>
+
+                <div class="arrow hidden md:block"></div>
+                <div class="transform rotate-90 md:hidden my-4">
+                    <div class="arrow"></div>
+                </div>
+
+                <!-- 步骤 4: 应用 -->
+                <div class="flex flex-col items-center text-center p-4">
+                     <div class="w-24 h-24 rounded-full bg-morandi-khaki flex items-center justify-center text-white mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-primary">数据价值挖掘</h3>
+                    <p class="text-sm text-secondary mt-1 w-48 h-10">作为交易统计、分析、挖掘的额外维度</p>
+                    <div class="mt-2 px-3 py-1 text-xs font-semibold rounded-full bg-orange-100 text-orange-800 invisible">
+                        占位
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: 商户特征信息字段 -->
+    <section class="slide bg-slate-50">
+        <div class="w-full max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-primary mb-4">商户特征信息字段举例</h2>
+            <p class="text-lg text-secondary mb-12 max-w-3xl mx-auto">"MCC 作为目前的商户唯一分类，非常粗糙，不符合商业场景里的语义和准确度要求。"</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                <!-- 核心 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 transform hover:-translate-y-2 transition-transform duration-300">
+                    <h3 class="text-2xl font-semibold text-primary mb-4 border-l-4 pl-3" style="border-color: var(--morandi-blue);">核心</h3>
+                    <ul class="space-y-3 text-secondary">
+                        <li><strong>行业:</strong> 餐饮, 零售, 汽车服务, 酒店</li>
+                        <li><strong>品牌:</strong> 麦当劳, 星巴克, 特斯拉等</li>
+                        <li><strong>地理位置:</strong> 国家, 城市, 商圈</li>
+                    </ul>
+                </div>
+                
+                <!-- 渠道与价格 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 transform hover:-translate-y-2 transition-transform duration-300">
+                    <h3 class="text-2xl font-semibold text-primary mb-4 border-l-4 pl-3" style="border-color: var(--morandi-green);">渠道与价格</h3>
+                     <ul class="space-y-3 text-secondary">
+                        <li><strong>渠道属性:</strong> 线上, 线下, O2O</li>
+                        <li><strong>价格敏感:</strong> 奢侈, 经济, 折扣, 性价比</li>
+                        <li><strong>地点子类型:</strong> 机场, 车站, 购物中心, 景区</li>
+                    </ul>
+                </div>
+
+                <!-- 场景客户分析 -->
+                 <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 transform hover:-translate-y-2 transition-transform duration-300 md:col-span-2 lg:col-span-1">
+                    <h3 class="text-2xl font-semibold text-primary mb-4 border-l-4 pl-3" style="border-color: var(--morandi-pink);">场景与客群</h3>
+                    <ul class="space-y-3 text-secondary">
+                        <li><strong>消费场景:</strong> 旅行, 奢品, 差旅, 亲子, 夜生活</li>
+                        <li><strong>目标客群:</strong> 儿童, 母婴, 女士, 学生, 商旅人士</li>
+                        <li><strong>服务品类:</strong> 火锅, 咖啡, 牛排, 手机, 书店等</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: 当前数据量级 -->
+    <section class="slide">
+        <div class="w-full max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-primary mb-4">当前数据量级</h2>
+            <p class="text-lg text-secondary mb-20">为 AI 模型提供坚实的数据基础</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="bg-white p-8 rounded-xl shadow-xl border border-gray-100 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300">
+                     <span class="text-6xl font-bold" style="color: var(--morandi-blue);">5000<span class="text-4xl">W+</span></span>
+                     <p class="mt-4 text-xl text-secondary">POS 注册</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl border border-gray-100 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300">
+                     <span class="text-6xl font-bold" style="color: var(--morandi-green);">1.2<span class="text-4xl">亿+</span></span>
+                    <p class="mt-4 text-xl text-secondary">总量</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl border border-gray-100 flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-300">
+                     <span class="text-6xl font-bold" style="color: var(--morandi-pink);">~1000<span class="text-4xl">W</span></span>
+                    <p class="mt-4 text-xl text-secondary">有交易 or Top</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
